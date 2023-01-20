@@ -1,0 +1,79 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="card-title">Liste des Reclamations</h4>
+            </div>
+            <div class="col-md-6">
+              <a routerLink="/reclamations/add" class="float-right btn btn-info">Ajouter</a>
+  
+            </div>
+          </div>
+         
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+                <th>
+                  Type
+                </th>
+                <th>
+                  Date de Detection
+                </th>
+                <th>
+                  Gravite
+                </th>
+                <th>
+                  Acteur 
+                </th>
+                <th>
+                  Source 
+                </th>
+               <th></th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let reclamation of reclamations |paginate: { id :'idReclamation', itemsPerPage : pageSizeT , currentPage: pageNumber}">
+                  <td>
+                    {{reclamation.type}}
+                  </td>
+                  <td>
+                    {{reclamation.dateDetection | date}}
+                  </td>
+                  <td>
+                    {{reclamation.gravite}}
+                  </td>
+                  <td >
+                    {{reclamation.acteur}}
+                  </td>
+                  <td >
+                    {{reclamation.lieuOuPromotion}}
+                  </td>
+                  <td >
+                    <a class="btn btn-outline-warning  btn-sm mr-2" title="consulter" [routerLink]="['/reclamations/show/',reclamation.idReclamation]"><i class="fa-solid fa-circle-info"></i></a>
+                    <a class="btn btn-info btn-sm mr-2" [routerLink]="['/reclamations/edit/',reclamation.idReclamation]" title="Modifier"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger btn-sm mr-2" (click)="onDeleteReclamation(reclamation.idReclamation)" title="Supprimer"><i class="fa fa-trash" aria-hidden="true"></i></a>
+
+                  </td>
+                </tr>
+
+
+
+              </tbody>
+            </table>
+            <div class="float-right">
+              <pagination-controls class="mw-100" id="idReclamation" (pageChange)="pageNumber = $event">
+                                  
+              </pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+</div>

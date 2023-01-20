@@ -1,0 +1,228 @@
+<div class="panel-header panel-header-sm">header
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="card-title">Liste des Actions Reclamation</h4>
+            </div>
+            <div class="col-md-6">
+              <a (click)="openPopupAdd()"class="float-right btn btn-info">Ajouter Action</a>
+  
+            </div>
+          </div>
+         
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+                <th>
+                  CIN
+                </th>
+                <th>
+                  Responsable
+                </th>
+                <th>
+                  Date Decision
+                </th>
+                <th>
+                  Decision 
+                </th>
+              
+               <th></th>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let action of actionReclamations">
+                  <td>
+                    {{action.cin}}
+                  </td>
+                  <td>
+                    {{action.responsable}}
+                  </td>
+                  <td >
+                    {{action.dateDecision | date}}
+                  </td>
+                  <td>
+                    {{action.libelle}}
+                  </td>
+                  <td >
+                    <a class="btn btn-info btn-sm mr-2" (click)="openPopupEdit(action.idDecision)"  title="Modifier"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger btn-sm mr-2" (click)="onDeleteActionReclamation(action.idDecision)" title="Supprimer"><i class="fa fa-trash" aria-hidden="true"></i></a>
+
+                  </td>
+                </tr>
+
+
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">GeeksForGeeks</h4>
+      </div>
+      <div class="modal-body">
+        <p>One Stop Solution for all CS problems</p>
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" 
+                (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>-->
+<div class="modal"  [ngStyle]="{'display':displayStyleAdd}" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTite}}</h5>
+        <button type="button" (click)="closePopupAdd()" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  [formGroup]="actionFormGroup" (ngSubmit)="onSubmitAddActionRisque()">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="cin">CIN <code>*</code></label>
+                <input type="text"  class="form-control" formControlName="cin" name="cin" id="cin">
+                <span class="mt-2" *ngIf="actionFormGroup.controls['cin'].invalid && (actionFormGroup.controls['cin'].dirty || actionFormGroup.controls['cin'].touched)" class="alert">
+                  <span *ngIf="actionFormGroup.controls['cin'].errors.required" class="text-danger">
+                  {{"Le champ CIN est obligatoire"}}
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="responsable">Responsable <code>*</code></label>
+                <input type="text"  class="form-control" formControlName="responsable" name="responsable" id="responsable">
+                <span class="mt-2" *ngIf="actionFormGroup.controls['responsable'].invalid && (actionFormGroup.controls['responsable'].dirty || actionFormGroup.controls['responsable'].touched)" class="alert">
+                  <span *ngIf="actionFormGroup.controls['responsable'].errors.required" class="text-danger">
+                  {{"Le champ Responsable est obligatoire"}}
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="dateDecision">Date Decision<code>*</code></label>
+                <input type="datetime-local"  class="form-control" formControlName="dateDecision" name="dateDecision" id="dateDecision">
+                <span class="mt-2" *ngIf="actionFormGroup.controls['dateDecision'].invalid && (actionFormGroup.controls['dateDecision'].dirty || actionFormGroup.controls['dateDecision'].touched)" class="alert">
+                  <span *ngIf="actionFormGroup.controls['dateDecision'].errors.required" class="text-danger">
+                  {{"Le champ Date Decision est obligatoire"}}
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="libelle">Decision <code>*</code></label>
+                <textarea  formControlName="libelle" name="libelle" id="libelle" rows="4" cols="80" class="form-control" placeholder="Here can be your libelle" ></textarea>
+                <span class="mt-2" *ngIf="actionFormGroup.controls['libelle'].invalid && (actionFormGroup.controls['libelle'].dirty || actionFormGroup.controls['libelle'].touched)" class="alert">
+                  <span *ngIf="actionFormGroup.controls['libelle'].errors.required" class="text-danger">
+                  {{"Le champ Decision est obligatoire"}}
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="float-right">
+              <button class="btn btn-success">Valider</button>
+          </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="modal"  [ngStyle]="{'display':displayStyleEdit}" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTite}}</h5>
+        <button type="button" (click)="closePopupEdit()" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  [formGroup]="actionFormGroupEdit" (ngSubmit)="onSubmitEditActionRisque()">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="cin">CIN <code>*</code></label>
+                <input type="text"  class="form-control" formControlName="cin" name="cin" id="cin">
+                <span class="mt-2" *ngIf="actionFormGroupEdit.controls['cin'].invalid && (actionFormGroupEdit.controls['cin'].dirty || actionFormGroupEdit.controls['cin'].touched)" class="alert">
+                  <span *ngIf="actionFormGroupEdit.controls['cin'].errors.required" class="text-danger">
+                  {{"Le champ CIN est obligatoire"}}
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="responsable">Responsable <code>*</code></label>
+                <input type="text"  class="form-control" formControlName="responsable" name="responsable" id="responsable">
+                <span class="mt-2" *ngIf="actionFormGroupEdit.controls['responsable'].invalid && (actionFormGroupEdit.controls['responsable'].dirty || actionFormGroupEdit.controls['responsable'].touched)" class="alert">
+                  <span *ngIf="actionFormGroupEdit.controls['responsable'].errors.required" class="text-danger">
+                  {{"Le champ Responsable est obligatoire"}}
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="dateDecision">Date Decision<code>*</code></label>
+                <input type="datetime-local"  class="form-control" formControlName="dateDecision" name="dateDecision" id="dateDecision">
+                <span class="mt-2" *ngIf="actionFormGroupEdit.controls['dateDecision'].invalid && (actionFormGroupEdit.controls['dateDecision'].dirty || actionFormGroupEdit.controls['dateDecision'].touched)" class="alert">
+                  <span *ngIf="actionFormGroupEdit.controls['dateDecision'].errors.required" class="text-danger">
+                  {{"Le champ Date Decision est obligatoire"}}
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="libelle">Decision <code>*</code></label>
+                <textarea  formControlName="libelle" name="libelle" id="libelle" rows="4" cols="80" class="form-control" placeholder="Here can be your libelle" ></textarea>
+                <span class="mt-2" *ngIf="actionFormGroupEdit.controls['libelle'].invalid && (actionFormGroupEdit.controls['libelle'].dirty || actionFormGroupEdit.controls['libelle'].touched)" class="alert">
+                  <span *ngIf="actionFormGroupEdit.controls['libelle'].errors.required" class="text-danger">
+                  {{"Le champ Decision est obligatoire"}}
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="float-right">
+              <button class="btn btn-success">Valider</button>
+          </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>

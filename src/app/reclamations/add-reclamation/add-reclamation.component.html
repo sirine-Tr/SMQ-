@@ -1,0 +1,123 @@
+<div class="panel-header panel-header-sm">header
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Ajouter une Reclamation</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="reclamationFrom" (ngSubmit)="onSubmit()" novalidate enctype="multipart/form-data">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="dateDetection">Date de Detetction <code>*</code></label>
+                  <input type="datetime-local" class="form-control" formControlName="dateDetection" name="dateDetection" id="dateDetection">
+                  <span class="mt-2" *ngIf="reclamationFrom.controls['dateDetection'].invalid && (reclamationFrom.controls['dateDetection'].dirty || reclamationFrom.controls['dateDetection'].touched)" class="alert">
+                    <span *ngIf="reclamationFrom.controls['dateDetection'].errors.required" class="text-danger">
+                    {{"Le champ date de detction est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="type">Type <code>*</code></label>
+                  <select name="type" formControlName="type" id="type" class="form-control">
+                     <option value="">{{"Choisir un type"}}</option>
+                     <option value="Qualite produit">{{"Qualite produit"}}</option>
+                     <option value="Qualite service">{{"Qualite service"}}</option>
+                     <option value="Modalite de paiement">{{"Modalite de paiement"}}</option>
+                     <option value="Prix">{{"Prix"}}</option>
+                     <option value="Delais">{{"Delais"}}</option>
+                     <option value="Structure">{{"Structure"}}</option>
+
+                  </select>
+                  <span class="mt-2" *ngIf="reclamationFrom.controls['type'].invalid && (reclamationFrom.controls['type'].dirty || reclamationFrom.controls['type'].touched)" class="alert">
+                    <span *ngIf="reclamationFrom.controls['type'].errors.required" class="text-danger">
+                    {{"Le champ type est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="gravite">Gravité <code>*</code></label>
+                  <select name="gravite" formControlName="gravite" name="gravite" id="gravite" class="form-control">
+                     <option value="">Choisir gravite</option>
+                     <option value="Pas grave">{{"Pas grave"}}</option>
+                     <option value="Moyen">{{"Moyen"}}</option>
+                     <option value="Grave">{{"Grave"}}</option>
+                     <option value="Três grave">{{"Três grave"}}</option>
+                  </select>
+                  <span class="mt-2" *ngIf="reclamationFrom.controls['gravite'].invalid && (reclamationFrom.controls['gravite'].dirty || reclamationFrom.controls['gravite'].touched)" class="alert">
+                    <span *ngIf="reclamationFrom.controls['gravite'].errors.required" class="text-danger">
+                    {{"Le champ gravite est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+             
+             
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="acteur">Acteur <code>*</code></label>
+                  <select name="acteur" formControlName="acteur" id="acteur" class="form-control">
+                    <option value="">{{"Choisir un acteur"}}</option>
+                     <option value="Administrateur">{{"Administrateur"}}</option>
+                     <option value="Professeur">{{"Professeur"}}</option>
+                     <option value="Etudiant">{{"Etudiant"}}</option>
+
+
+                  </select>
+                  <span class="mt-2" *ngIf="reclamationFrom.controls['acteur'].invalid && (reclamationFrom.controls['acteur'].dirty || reclamationFrom.controls['acteur'].touched)" class="alert">
+                    <span *ngIf="reclamationFrom.controls['acteur'].errors.required" class="text-danger">
+                    {{"Le champ Acteur est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+             <!-- <div class="col-md-6">
+                <div class="form-group">
+                  <label for="pieceJointe">Piece Jointe </label>
+                  <input type="file" (change)="onUploadFiles($event.target.files)" class="form-control"    name="pieceJointe" id="pieceJointe">
+                  
+                </div>
+              </div>-->
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="lieuOuPromotion">Source <code>*</code></label>
+                  <input type="text" class="form-control" formControlName="lieuOuPromotion" name="lieuOuPromotion" id="lieuOuPromotion">
+                  <span class="mt-2" *ngIf="reclamationFrom.controls['lieuOuPromotion'].invalid && (reclamationFrom.controls['lieuOuPromotion'].dirty || reclamationFrom.controls['lieuOuPromotion'].touched)" class="alert">
+                    <span *ngIf="reclamationFrom.controls['lieuOuPromotion'].errors.required" class="text-danger">
+                    {{"Le champ Source est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="description">Description <code>*</code></label>
+                  <textarea formControlName="description" name="description" id="description" rows="4" cols="80" class="form-control" placeholder="Here can be your description" ></textarea>
+                  <span class="mt-2" *ngIf="reclamationFrom.controls['description'].invalid && (reclamationFrom.controls['description'].dirty || reclamationFrom.controls['description'].touched)" class="alert">
+                    <span *ngIf="reclamationFrom.controls['description'].errors.required" class="text-danger">
+                    {{"Le champ description est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <button class="btn btn-success">Valider</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

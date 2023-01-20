@@ -1,0 +1,441 @@
+<div class="panel-header panel-header-sm">header
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Details Reclamation</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="reclamationFrom" novalidate>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="dateDetection">Date de Detetction <code>*</code></label>
+                  <input type="datetime-local" readonly class="form-control" formControlName="dateDetection" name="dateDetection" id="dateDetection">
+                  <span class="mt-2" *ngIf="reclamationFrom.controls['dateDetection'].invalid && (reclamationFrom.controls['dateDetection'].dirty || reclamationFrom.controls['dateDetection'].touched)" class="alert">
+                    <span *ngIf="reclamationFrom.controls['dateDetection'].errors.required" class="text-danger">
+                    {{"Le champ date de detction est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="type">Type <code>*</code></label>
+                  <select name="type"  readonly formControlName="type" id="type" class="form-control">
+                    <option value="">{{"Choisir un type"}}</option>
+                    <option value="Qualite produit">{{"Qualite produit"}}</option>
+                    <option value="Qualite service">{{"Qualite service"}}</option>
+                    <option value="Modalite de paiement">{{"Modalite de paiement"}}</option>
+                    <option value="Prix">{{"Prix"}}</option>
+                    <option value="Delais">{{"Delais"}}</option>
+                    <option value="Structure">{{"Structure"}}</option>
+
+
+                  </select>
+                  <span class="mt-2" *ngIf="reclamationFrom.controls['type'].invalid && (reclamationFrom.controls['type'].dirty || reclamationFrom.controls['type'].touched)" class="alert">
+                    <span *ngIf="reclamationFrom.controls['type'].errors.required" class="text-danger">
+                    {{"Le champ type est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="gravite">Gravité <code>*</code></label>
+                  <select name="gravite" readonly formControlName="gravite" name="gravite" id="gravite" class="form-control">
+                    <option value="">Choisir gravite</option>
+                    <option value="Pas grave">{{"Pas grave"}}</option>
+                    <option value="Moyen">{{"Moyen"}}</option>
+                    <option value="Grave">{{"Grave"}}</option>
+                    <option value="Três grave">{{"Três grave"}}</option>
+
+                  </select>
+                  <span class="mt-2" *ngIf="reclamationFrom.controls['gravite'].invalid && (reclamationFrom.controls['gravite'].dirty || reclamationFrom.controls['gravite'].touched)" class="alert">
+                    <span *ngIf="reclamationFrom.controls['gravite'].errors.required" class="text-danger">
+                    {{"Le champ gravite est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="acteur">Acteur <code>*</code></label>
+                  <select name="acteur" readonly formControlName="acteur" id="acteur" class="form-control">
+                    <option value="">{{"Choisir un acteur"}}</option>
+                     <option value="Administrateur">{{"Administrateur"}}</option>
+                     <option value="Professeur">{{"Professeur"}}</option>
+                     <option value="Etudiant">{{"Etudiant"}}</option>
+
+
+                  </select>
+                  <span class="mt-2" *ngIf="reclamationFrom.controls['acteur'].invalid && (reclamationFrom.controls['acteur'].dirty || reclamationFrom.controls['acteur'].touched)" class="alert">
+                    <span *ngIf="reclamationFrom.controls['acteur'].errors.required" class="text-danger">
+                    {{"Le champ Acteur est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="lieuOuPromotion">Source <code>*</code></label>
+                  <input type="text" readonly class="form-control" formControlName="lieuOuPromotion" name="lieuOuPromotion" id="lieuOuPromotion">
+                  <span class="mt-2" *ngIf="reclamationFrom.controls['lieuOuPromotion'].invalid && (reclamationFrom.controls['lieuOuPromotion'].dirty || reclamationFrom.controls['lieuOuPromotion'].touched)" class="alert">
+                    <span *ngIf="reclamationFrom.controls['lieuOuPromotion'].errors.required" class="text-danger">
+                    {{"Le champ Source est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <!--<div class="col-md-12">
+                <div class="form-group">
+                  <label for="pieceJointe">Piece Jointe <code>*</code></label>
+                  <input type="file" readonly class="form-control"  formControlName="pieceJointe" name="pieceJointe" id="pieceJointe">
+                  <span class="mt-2" *ngIf="reclamationFrom.controls['pieceJointe'].invalid && (reclamationFrom.controls['pieceJointe'].dirty || reclamationFrom.controls['pieceJointe'].touched)" class="alert">
+                    <span *ngIf="reclamationFrom.controls['pieceJointe'].errors.required" class="text-danger">
+                    {{"Le champ Piece Jointe est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>-->
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="description">Description <code>*</code></label>
+                  <textarea  readonly formControlName="description" name="description" id="description" rows="4" cols="80" class="form-control" placeholder="Here can be your description" ></textarea>
+                  <span class="mt-2" *ngIf="reclamationFrom.controls['description'].invalid && (reclamationFrom.controls['description'].dirty || reclamationFrom.controls['description'].touched)" class="alert">
+                    <span *ngIf="reclamationFrom.controls['description'].errors.required" class="text-danger">
+                    {{"Le champ description est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="card-title">Liste des Causes</h4>
+            </div>
+            <div class="col-md-6">
+              <a (click)="openPopupAddCause()"class="float-right btn btn-info">Ajouter Cause</a>
+  
+            </div>
+          </div>
+         
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+                <th>
+                  Date
+                </th>
+                <th>
+                  Nature
+                </th>
+                <th>
+                  Description
+                </th>
+            
+               <th></th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cause of causes">
+                <td>
+                  {{cause.dateCreation| date}}
+                </td>
+                <td>
+                  {{cause.nature}}
+                </td>
+                <td >
+                 {{cause.descriptionCause}}
+                </td>
+               
+                <td >
+                  <a class="btn btn-outline-warning  btn-sm mr-2" [routerLink]="['/causes/show',cause.idCauses]" title="consulter"><i class="fa-solid fa-circle-info"></i></a>
+                  <a class="btn btn-info btn-sm mr-2" (click)="openPopupEditCause(cause.idCauses)" title="Modifier"><i class="fas fa-edit"></i></a>
+                  <a class="btn btn-danger btn-sm mr-2"  (click)="deleteCause(cause.idCauses)" title="Supprimer"><i class="fa fa-trash" aria-hidden="true"></i></a>
+
+                </td>
+              </tr>
+
+              </tbody>
+            </table>
+           
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+              <h4 class="card-title">Liste des Consequences</h4>
+            </div>
+            <div class="col-md-6">
+              <a (click)="openPopupAddConsequeance()"class="float-right btn btn-info">Ajouter Consequences</a>
+  
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="text-primary">
+                  <th>
+                    Date
+                  </th>
+                 
+                  <th>
+                    Description
+                  </th>
+              
+                 <th></th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let consequence of consequences">
+                  <td>
+                    {{consequence.dateCreation | date}}
+                  </td>
+                 
+                  <td >
+                   {{consequence.descriptionConsequances}}
+                  </td>
+                 
+                  <td >
+
+                    <a class="btn btn-info btn-sm mr-2" (click)="openPopupEditConsequeance(consequence.idConsequances)"  title="Modifier"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger btn-sm mr-2" (click)="deleteConsequence(consequence.idConsequances)" title="Supprimer"><i class="fa fa-trash" aria-hidden="true"></i></a>
+  
+                  </td>
+                </tr>
+  
+                </tbody>
+              </table>
+              
+            </div>
+          </div>        
+
+        </div>
+      </div>
+    </div>
+</div>
+<div class="modal"  [ngStyle]="{'display':displayStyleCauseAdd}" id="exampleModalCause" tabindex="-1" role="dialog" aria-labelledby="exampleModalCauseLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCauseLabel">Ajouter une cause</h5>
+        <button type="button" (click)="closePopupAddCause()" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  [formGroup]="causeForm" (ngSubmit)="submitAddCauses()">
+          <div class="row">
+            
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="dateCreation">Date Creation<code>*</code></label>
+                <input type="datetime-local"  class="form-control" formControlName="dateCreation" name="dateCreation" id="dateCreation">
+                <span class="mt-2" *ngIf="causeForm.controls['dateCreation'].invalid && (causeForm.controls['dateCreation'].dirty || causeForm.controls['dateCreation'].touched)" class="alert">
+                  <span *ngIf="causeForm.controls['dateCreation'].errors.required" class="text-danger">
+                  {{"Le champ Date Creation est obligatoire"}}
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                  <label for="nature">Nature <code>*</code></label>
+                  <select name="type"  formControlName="nature" id="nature" class="form-control">
+                    <option value="">{{"Choisir un Nature"}}</option>
+                    <option value="Methode">{{"Methode"}}</option>
+                    <option value="Milieu">{{"Milieu"}}</option>
+                    <option value="Machine">{{"Machine"}}</option>
+                    <option value="Manœuvre">{{"Manœuvre"}}</option>
+                  </select>
+                  <span class="mt-2" *ngIf="causeForm.controls['nature'].invalid && (causeForm.controls['nature'].dirty || causeForm.controls['nature'].touched)" class="alert">
+                    <span *ngIf="causeForm.controls['nature'].errors.required" class="text-danger">
+                    {{"Le champ Nature est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="descriptionCause">Description <code>*</code></label>
+                  <textarea  formControlName="descriptionCause" name="descriptionCause" id="descriptionCause" rows="4" cols="80" class="form-control" placeholder="Here can be your libelle" ></textarea>
+                  <span class="mt-2" *ngIf="causeForm.controls['descriptionCause'].invalid && (causeForm.controls['descriptionCause'].dirty || causeForm.controls['descriptionCause'].touched)" class="alert">
+                    <span *ngIf="causeForm.controls['descriptionCause'].errors.required" class="text-danger">
+                    {{"Le champ description est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+          </div>
+          <div class="float-right">
+              <button class="btn btn-success">Valider</button>
+          </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal"  [ngStyle]="{'display':displayStyleConsequeanceAdd}" id="exampleModalConsequene" tabindex="-1" role="dialog" aria-labelledby="exampleModalConsequeneLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalConsequeneLabel">Ajouter une Consequence</h5>
+          <button type="button" (click)="closePopuAddConsequeance()" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form  [formGroup]="consequenceForm" (ngSubmit)="submitAddConsequeces()">
+            <div class="row">
+              
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="dateCreation">Date Creation<code>*</code></label>
+                  <input type="datetime-local"  class="form-control" formControlName="dateCreation" name="dateCreation" id="dateCreation">
+                  <span class="mt-2" *ngIf="consequenceForm.controls['dateCreation'].invalid && (consequenceForm.controls['dateCreation'].dirty || consequenceForm.controls['dateCreation'].touched)" class="alert">
+                    <span *ngIf="consequenceForm.controls['dateCreation'].errors.required" class="text-danger">
+                    {{"Le champ Date Creation est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+        
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="descriptionConsequances">Description <code>*</code></label>
+                    <textarea  formControlName="descriptionConsequances" name="descriptionConsequances" id="descriptionConsequances" rows="4" cols="80" class="form-control" placeholder="Here can be your libelle" ></textarea>
+                    <span class="mt-2" *ngIf="consequenceForm.controls['descriptionConsequances'].invalid && (consequenceForm.controls['descriptionConsequances'].dirty || consequenceForm.controls['descriptionConsequances'].touched)" class="alert">
+                      <span *ngIf="consequenceForm.controls['descriptionConsequances'].errors.required" class="text-danger">
+                      {{"Le champ description est obligatoire"}}
+                      </span>
+                    </span>
+                  </div>
+                </div>
+            </div>
+            <div class="float-right">
+                <button class="btn btn-success">Valider</button>
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="modal"  [ngStyle]="{'display':displayStyleConsequeanceEdit}" id="exampleModalConsequene" tabindex="-1" role="dialog" aria-labelledby="exampleModalConsequeneLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalConsequeneLabel">Modifier une Consequence</h5>
+          <button type="button" (click)="closePopuEditConsequeance()" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form  [formGroup]="consequenceFormEdit" (ngSubmit)="submitEditConsequeces()">
+            <div class="row">
+              
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="dateCreation">Date Creation<code>*</code></label>
+                  <input type="datetime-local"  class="form-control" formControlName="dateCreation" name="dateCreation" id="dateCreation">
+                  <span class="mt-2" *ngIf="consequenceFormEdit.controls['dateCreation'].invalid && (consequenceFormEdit.controls['dateCreation'].dirty || consequenceFormEdit.controls['dateCreation'].touched)" class="alert">
+                    <span *ngIf="consequenceFormEdit.controls['dateCreation'].errors.required" class="text-danger">
+                    {{"Le champ Date Creation est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+        
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="descriptionConsequances">Description <code>*</code></label>
+                    <textarea  formControlName="descriptionConsequances" name="descriptionConsequances" id="descriptionConsequances" rows="4" cols="80" class="form-control" placeholder="Here can be your libelle" ></textarea>
+                    <span class="mt-2" *ngIf="consequenceFormEdit.controls['descriptionConsequances'].invalid && (consequenceFormEdit.controls['descriptionConsequances'].dirty || consequenceFormEdit.controls['descriptionConsequances'].touched)" class="alert">
+                      <span *ngIf="consequenceFormEdit.controls['descriptionConsequances'].errors.required" class="text-danger">
+                      {{"Le champ description est obligatoire"}}
+                      </span>
+                    </span>
+                  </div>
+                </div>
+            </div>
+            <div class="float-right">
+                <button class="btn btn-success">Valider</button>
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal"  [ngStyle]="{'display':displayStyleCauseEdit}" id="exampleModalCause" tabindex="-1" role="dialog" aria-labelledby="exampleModalCauseLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCauseLabel">Modifier une cause</h5>
+          <button type="button" (click)="closePopupEditCause()" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form  [formGroup]="causeFormEdit" (ngSubmit)="submitEditCauses()">
+            <div class="row">
+              
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="dateCreation">Date Creation<code>*</code></label>
+                  <input type="datetime-local"  class="form-control" formControlName="dateCreation" name="dateCreation" id="dateCreation">
+                  <span class="mt-2" *ngIf="causeFormEdit.controls['dateCreation'].invalid && (causeFormEdit.controls['dateCreation'].dirty || causeFormEdit.controls['dateCreation'].touched)" class="alert">
+                    <span *ngIf="causeFormEdit.controls['dateCreation'].errors.required" class="text-danger">
+                    {{"Le champ Date Creation est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="nature">Nature <code>*</code></label>
+                    <select name="type"  formControlName="nature" id="nature" class="form-control">
+                      <option value="">{{"Choisir un Nature"}}</option>
+                      <option value="Methode">{{"Methode"}}</option>
+                      <option value="Milieu">{{"Milieu"}}</option>
+                      <option value="Machine">{{"Machine"}}</option>
+                      <option value="Manœuvre">{{"Manœuvre"}}</option>
+                    </select>
+                    <span class="mt-2" *ngIf="causeFormEdit.controls['nature'].invalid && (causeFormEdit.controls['nature'].dirty || causeFormEdit.controls['nature'].touched)" class="alert">
+                      <span *ngIf="causeFormEdit.controls['nature'].errors.required" class="text-danger">
+                      {{"Le champ Nature est obligatoire"}}
+                      </span>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="descriptionCause">Description <code>*</code></label>
+                    <textarea  formControlName="descriptionCause" name="descriptionCause" id="descriptionCause" rows="4" cols="80" class="form-control" placeholder="Here can be your libelle" ></textarea>
+                    <span class="mt-2" *ngIf="causeFormEdit.controls['descriptionCause'].invalid && (causeFormEdit.controls['descriptionCause'].dirty || causeFormEdit.controls['descriptionCause'].touched)" class="alert">
+                      <span *ngIf="causeFormEdit.controls['descriptionCause'].errors.required" class="text-danger">
+                      {{"Le champ description est obligatoire"}}
+                      </span>
+                    </span>
+                  </div>
+                </div>
+            </div>
+            <div class="float-right">
+                <button class="btn btn-success">Valider</button>
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  

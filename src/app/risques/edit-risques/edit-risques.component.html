@@ -1,0 +1,141 @@
+<div class="panel-header panel-header-sm">header
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Modifier un Risque</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="risquesForm" (ngSubmit)="onSubmit()" novalidate>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="dateDetection">Date de Detetction <code>*</code></label>
+                  <input type="datetime-local" class="form-control" formControlName="dateDetection" name="dateDetection" id="dateDetection">
+                  <span class="mt-2" *ngIf="risquesForm.controls['dateDetection'].invalid && (risquesForm.controls['dateDetection'].dirty || risquesForm.controls['dateDetection'].touched)" class="alert">
+                    <span *ngIf="risquesForm.controls['dateDetection'].errors.required" class="text-danger">
+                    {{"Le champ date de detction est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="type">Type <code>*</code></label>
+                  <select name="type" formControlName="type" id="type" class="form-control">
+                    <option value="">{{"Choisir un type"}}</option>
+                     <option value="Qualite produit">{{"Qualite produit"}}</option>
+                     <option value="Qualite service">{{"Qualite service"}}</option>
+                     <option value="Modalite de paiement">{{"Modalite de paiement"}}</option>
+                     <option value="Prix">{{"Prix"}}</option>
+                     <option value="Delais">{{"Delais"}}</option>
+                     <option value="Structure">{{"Structure"}}</option>
+
+
+                  </select>
+                  <span class="mt-2" *ngIf="risquesForm.controls['type'].invalid && (risquesForm.controls['type'].dirty || risquesForm.controls['type'].touched)" class="alert">
+                    <span *ngIf="risquesForm.controls['type'].errors.required" class="text-danger">
+                    {{"Le champ type est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="niveau">Niveau <code>*</code></label>
+                  <select name="niveau" formControlName="niveau" name="niveau" id="niveau" class="form-control">
+                    <option value="">{{"Choisir un niveau"}}</option>
+                    <option value="Aucun Risque">{{"Aucun Risque"}}</option>
+                    <option value="Risque mineur">{{"Risque mineur"}}</option>
+                    <option value="Risque majeur">{{"Risque majeur"}}</option>
+                    <option value="Risque mettant en jeu la securite des personnes">{{"Risque mettant en jeu la securite des personnes"}}</option>
+
+                 </select>
+                  <span class="mt-2" *ngIf="risquesForm.controls['niveau'].invalid && (risquesForm.controls['niveau'].dirty || risquesForm.controls['niveau'].touched)" class="alert">
+                    <span *ngIf="risquesForm.controls['niveau'].errors.required" class="text-danger">
+                    {{"Le champ niveau est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="acteur">Acteur <code>*</code></label>
+                  <select name="acteur" formControlName="acteur" id="acteur" class="form-control">
+                    <option value="">{{"Choisir un acteur"}}</option>
+                     <option value="Administrateur">{{"Administrateur"}}</option>
+                     <option value="Professeur">{{"Professeur"}}</option>
+                     <option value="Etudiant">{{"Etudiant"}}</option>
+
+
+                  </select>
+                  <span class="mt-2" *ngIf="risquesForm.controls['acteur'].invalid && (risquesForm.controls['acteur'].dirty || risquesForm.controls['acteur'].touched)" class="alert">
+                    <span *ngIf="risquesForm.controls['acteur'].errors.required" class="text-danger">
+                    {{"Le champ Acteur est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="lieuOuPromotion">Source <code>*</code></label>
+                  <input type="text" class="form-control" formControlName="lieuOuPromotion" name="lieuOuPromotion" id="lieuOuPromotion">
+                  <span class="mt-2" *ngIf="risquesForm.controls['lieuOuPromotion'].invalid && (risquesForm.controls['lieuOuPromotion'].dirty || risquesForm.controls['lieuOuPromotion'].touched)" class="alert">
+                    <span *ngIf="risquesForm.controls['lieuOuPromotion'].errors.required" class="text-danger">
+                    {{"Le champ Source est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="evolution">evolution <code>*</code></label>
+                  <select name="evolution" formControlName="evolution" id="evolution" class="form-control">
+                    <option value="">{{"Choisir une evolution"}}</option>
+                     <option value="Evolution vers moins de risque">{{"Evolution vers moins de risque"}}</option>
+                     <option value="Pas de changement">{{"Pas de changement"}}</option>
+                     <option value="Evolution vers plus de risque">{{"Evolution vers plus de risque"}}</option>
+
+
+                  </select>
+                  <span class="mt-2" *ngIf="risquesForm.controls['evolution'].invalid && (risquesForm.controls['evolution'].dirty || risquesForm.controls['evolution'].touched)" class="alert">
+                    <span *ngIf="risquesForm.controls['evolution'].errors.required" class="text-danger">
+                    {{"Le champ evolution est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="pieceJointe">Piece Jointe </label>
+                  <input type="file" (change)="onUploadFiles($event.target.files)" class="form-control"  formControlName="pieceJointe" name="pieceJointe" id="pieceJointe">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="description">Description <code>*</code></label>
+                  <textarea formControlName="description" name="description" id="description" rows="4" cols="80" class="form-control" placeholder="Here can be your description" ></textarea>
+                  <span class="mt-2" *ngIf="risquesForm.controls['description'].invalid && (risquesForm.controls['description'].dirty || risquesForm.controls['description'].touched)" class="alert">
+                    <span *ngIf="risquesForm.controls['description'].errors.required" class="text-danger">
+                    {{"Le champ description est obligatoire"}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <button class="btn btn-success">Valider</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
